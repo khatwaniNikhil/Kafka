@@ -14,7 +14,10 @@
 # Project Setup 
 1. For staging and local env. setup - use docker-compose with yml config. and zookeeper and kafka service. Refer https://www.baeldung.com/ops/kafka-new-topic-docker-compose
 2. While modelling unique messages to different kafka topics, ensure no ordering issues due to parallel  out of order consumption of messages around same entity for eg. customer via different consumers.
-3. JSON based message payload with statically defined schema which is version controlled in git using java classes. We didn't had schema registry setup. Refer https://www.linkedin.com/pulse/kafka-schema-registry-zhiqiang-tang/
+
+## Schema registry and validation of live messages
+1. We used JSON based message payload with statically defined schema which is version controlled(using java model classes) as a git project. This message schema jar was imported into the producer and consumer side modules to perform message serialisation and deserialisation before executing any business logic.
+2. kafka/confluent has support for schema registry setup. Refer https://www.linkedin.com/pulse/kafka-schema-registry-zhiqiang-tang/
    
 ## Evolving Topic message schemas in the running production cluster
 
